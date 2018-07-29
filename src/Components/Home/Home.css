@@ -28,7 +28,7 @@
 }
 
 .home-nav > h1:hover {
-    color: gray;
+    color: lightgray;
     cursor: pointer;
 }
 
