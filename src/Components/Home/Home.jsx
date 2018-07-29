@@ -39,7 +39,6 @@ class Home extends Component {
     }
 
     render(){
-        console.log(background)
         return (
             <div className="home-container" style={{ "backgroundImage": `url(${image6})`, "backgroundSize": "cover", "backgroundPosition": "center"}}>
                 <nav className="home-nav">

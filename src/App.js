@@ -4,8 +4,8 @@ import React, { Component } from 'react';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
-//Components
-import Home from './Components/Home/Home';
+//Router
+import Router from './router';
 
 //StyleSheet (Reset-CSS)
 import 'reset-css';
@@ -16,7 +16,7 @@ class App extends Component {
     library.add(faSearch);
     return (
       <div>
-        <Home />
+        {Router}
       </div>
     );
   }

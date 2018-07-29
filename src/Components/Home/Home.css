@@ -27,6 +27,11 @@
     color: white;
 }
 
+.home-nav > h1:hover {
+    color: gray;
+    cursor: pointer;
+}
+
 
 .home-search-container {
     width: 70%;
