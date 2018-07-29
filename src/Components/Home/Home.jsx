@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 //StyleSheets
 import './Home.css';
 
-//Images
+//Importing Images
 import image1 from '../../assets/arch.jpg';
 import image2 from '../../assets/beach.jpg';
 import image3 from '../../assets/concert.jpg';
@@ -14,41 +14,34 @@ import image4 from '../../assets/girl.jpg';
 import image5 from '../../assets/jellyfish.jpg';
 import image6 from '../../assets/skate.jpg';
 
-let counter = 1;
+//Array Of Background Images For Landing Page
+let backgroundImageArray = [image1, image2, image3, image4, image5, image6];
+
+//Loops through the backgroundImageArray and will desplay the image
+let background = document.getElementsByClassName('home-container');
+let i = 0;
+setInterval(() => {
+    background[0].style.backgroundImage = 'url(' + backgroundImageArray[i] + ')';
+    i += 1;
+    if(i == backgroundImageArray.length){
+        i = 0;
+    }
+}, 5000);
+
 
 class Home extends Component {
     constructor(){
         super()
 
         this.state = {
+
         }
-
-        this.backgroundFunc = this.backgroundFunc.bind(this);
     }
-
-    componentDidMount(){
-        setInterval(() => counter += counter + 1, 3000)
-    }
-
-     backgroundFunc(){
-         if(counter === 1){
-             return image1
-         }else if(counter === 2){
-             return image2
-         }else if(counter === 3){
-             return image3
-         }else if(counter === 4){
-             return image4
-         }else if(counter === 5){
-             return image5
-         }else {
-             return image6
-         }
-     }
 
     render(){
+        console.log(background)
         return (
-            <div className="home-container" style={{"backgroundImage": `url(${this.backgroundFunc()})`, "backgroundSize": "cover", "backgroundPosition": "center"}}>
+            <div className="home-container" style={{ "backgroundImage": `url(${image6})`, "backgroundSize": "cover", "backgroundPosition": "center"}}>
                 <nav className="home-nav">
                     <h1>flickr</h1>
                     <div className="home-search-container">
