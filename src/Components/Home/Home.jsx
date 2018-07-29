@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
 
-//React Router
-import {Redirect} from 'react-router-dom';
-
 //Font Awesome Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
