@@ -6,6 +6,7 @@
     height: 100vh;
     font-family: 'Montserrat', sans-serif;
     background-repeat: no-repeat;
+    transition: 1s ease-in;
 }
 
 /* Navbar */

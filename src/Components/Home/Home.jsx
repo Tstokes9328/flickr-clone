@@ -8,14 +8,14 @@ import './Home.css';
 
 //Importing Images
 import image1 from '../../assets/arch.jpg';
-import image2 from '../../assets/beach.jpg';
+import image2 from '../../assets/beach.jpg'; //not in use; might need later
 import image3 from '../../assets/concert.jpg';
 import image4 from '../../assets/girl.jpg';
-import image5 from '../../assets/jellyfish.jpg';
+import image5 from '../../assets/jellyfish.jpg'; //not in use; might need later
 import image6 from '../../assets/skate.jpg';
 
 //Array Of Background Images For Landing Page
-let backgroundImageArray = [image1, image2, image3, image4, image5, image6];
+let backgroundImageArray = [image1, image3, image4, image6];
 
 //Loops through the backgroundImageArray and will desplay the image
 let background = document.getElementsByClassName('home-container');
