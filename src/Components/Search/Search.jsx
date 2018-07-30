@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 
+//Router DOM
+import {Link} from 'react-router-dom';
+
 //Font Awesome Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -14,7 +17,7 @@ class Search extends Component {
             <div className="search-container">
                 <nav className="search-nav">
                     <div className="search-nav-box1">
-                        <h1>flickr</h1>
+                        <Link to="/"><h1>flickr</h1></Link>
                         <h2>Explore</h2>
                         <h2>Create</h2>
                     </div>
@@ -29,6 +32,14 @@ class Search extends Component {
                         <button id="search-nav-btn2">Sign Up</button>
                     </div>
                 </nav>
+
+                <div className="nav-filter">
+                    <ul>
+                        <li><Link to='#'>Photos</Link></li>
+                        <li><Link to='#'>People</Link></li>
+                        <li><Link to='#'>Groups</Link></li>
+                    </ul>
+                </div>
             </div>
         )
     }
