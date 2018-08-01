@@ -1,4 +1,8 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+
+//Reducer functions
+import {changeSearchKey} from '../../redux/reducer';
 
 //Font Awesome Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -16,15 +20,17 @@ import image6 from '../../assets/skate.jpg';
 
 
 class Home extends Component {
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
 
         this.state = {
+            input: ''
         }
 
         //binding methods
         this.createBackgroundImage = this.createBackgroundImage.bind(this);
         this.handleKeyPress = this.handleKeyPress.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
     }
 
     //Lifecyce Hooks
@@ -53,19 +59,31 @@ class Home extends Component {
 
         //Links to search page after pressing 'enter' in search field
         handleKeyPress(event){
+            let userInput = this.state.input;
+            this.props.changeSearchKey(userInput)
             if(event.key === 'Enter'){
                 this.props.history.push('/search');
             }
         }
 
-    render(){
+        //passes whatever is type into the input to the redux state searchKey value
+        handleInputChange(value){
+            this.setState({input: value})
+        }
+
+    render(props){
         return (
             <div id="home-container" className="home-container" style={{ "backgroundImage": `url(${image6})`, "backgroundSize": "cover", "backgroundPosition": "center"}}>
                 <nav className="home-nav">
                     <h1>flickr</h1>
                     <div className="home-search-container">
                         <span id="home-nav-search-icon"><FontAwesomeIcon icon="search"/></span>
-                        <input type="text" placeholder="Photos, people, or groups" onKeyUp={this.handleKeyPress}/>
+                        <input 
+                        type="text" 
+                        placeholder="Photos, people, or groups"
+                        onChange={(event) => this.handleInputChange(event.target.value)}
+                        onKeyUp={this.handleKeyPress}
+                        />
                     </div>
                     <div className="home-nav-btn-container">
                     <button id="home-nav-login">Log In</button>
@@ -95,4 +113,11 @@ class Home extends Component {
     }
 }
 
-export default Home;
+//subscribing to redux store
+function mapStateToProps(state){
+    return {
+        reducer: state
+    }
+}
+
+export default connect(mapStateToProps, {changeSearchKey})(Home);

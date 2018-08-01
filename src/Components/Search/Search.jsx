@@ -1,5 +1,9 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import axios from 'axios';
+
+//Reducer functions
+import {getImages} from '../../redux/reducer';
 
 //Router DOM
 import {Link} from 'react-router-dom';
@@ -11,18 +15,32 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './Search.css';
 
 class Search extends Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
 
     }
 
-    componentDidMount(){
-        axios.get('getPictures').then(response => {
-            console.log(response)
+    //Lifecycle hooks
+    componentDidMount(props){
+        let searchTerm = this.props.reducer.searchKey
+        this.props.getImages(searchTerm);
+    }
+
+    render(props){
+
+        //storing the flickr images array from redux into a variable
+        let images = this.props.reducer.images
+
+        //mapping through the redux images array to display as a list
+        let flickrImages = images.map((element, index) => {
+            return (
+                <div key={index}>
+                    <img src={element.media.m}/>
+                </div>
+            )
         })
-    }
 
-    render(){
+        console.log(this.props.reducer)
         return(
             <div className="search-container">
                 <nav className="search-nav">
@@ -50,9 +68,20 @@ class Search extends Component {
                         <li><Link to='#'>Groups</Link></li>
                     </ul>
                 </div>
+
+                <div className="display-container">
+                    {flickrImages}
+                </div>
             </div>
         )
     }
 }
 
-export default Search;
+//subscribing to the redux store
+function mapStateToProps(state){
+    return {
+        reducer: state
+    }
+}
+
+export default connect(mapStateToProps, {getImages})(Search);

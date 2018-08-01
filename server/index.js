@@ -6,8 +6,9 @@ const app = express();
 app.use(bodyParser.json());
 
 //Routes
-app.get('/getPictures', (req, res) => {
-    axios.get('https://api.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=true').then(response => {
+app.post('/getPictures', (req, res) => {
+    let {searchTerm} = req.body;
+    axios.get(`https://api.flickr.com/services/feeds/photos_public.gne?tags=${searchTerm}&format=json&nojsoncallback=true`).then(response => {
         res.send(response.data)
     })
 })
