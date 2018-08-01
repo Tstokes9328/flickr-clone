@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import axios from 'axios';
 
 //Router DOM
 import {Link} from 'react-router-dom';
@@ -10,7 +11,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './Search.css';
 
 class Search extends Component {
+    constructor(){
+        super();
 
+    }
+
+    componentDidMount(){
+        axios.get('getPictures').then(response => {
+            console.log(response)
+        })
+    }
 
     render(){
         return(
