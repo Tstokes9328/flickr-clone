@@ -188,10 +188,29 @@
 /* display container */
 .display-container {
     height: 90vh;
-    width: 100%;
+    width: 90%;
+    margin: 50px auto;
     display: flex;
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
     overflow: scroll;
+    padding-bottom: 25px;
 }
+
+::-webkit-scrollbar {
+    width: 0px; 
+    background: transparent; 
+}
+
+ .flickr-photo-container {
+     margin: 1%;
+ }
+
+ .flickr-photo-container > a > img{
+     border: 2px solid black;
+ }
+
+ .flickr-photo-container > a > img:hover {
+    transform: scale(1.1);
+ }

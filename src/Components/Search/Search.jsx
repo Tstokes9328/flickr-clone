@@ -54,13 +54,12 @@ class Search extends Component {
         //mapping through the redux images array to display as a list
         let flickrImages = images.map((element, index) => {
             return (
-                <div key={index}>
-                    <img src={element.media.m}/>
+                <div key={index} className="flickr-photo-container">
+                    <a href={element.link}><img src={element.media.m}/></a>
                 </div>
             )
         })
 
-        console.log(this.state.input)
         return(
             <div className="search-container">
                 <nav className="search-nav">

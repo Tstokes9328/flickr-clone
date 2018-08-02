@@ -22,6 +22,7 @@ const GET_IMAGES = 'GET_IMAGES';
     //Makes an AJAX request to get images from flickr
     export function getImages(searchTerm){
         let flickrImages = axios.post('getPictures', {searchTerm}).then(response => {
+            console.log(response.data.items)
             return response.data.items
         });
         return {
