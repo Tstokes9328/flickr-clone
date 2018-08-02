@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import axios from 'axios';
 
 //Reducer functions
 import {getImages} from '../../redux/reducer';
@@ -18,12 +17,33 @@ class Search extends Component {
     constructor(props){
         super(props);
 
+       this.state = {
+           input: ''
+       }
+
+        //Binding methods
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.onEnter = this.onEnter.bind(this);
     }
 
     //Lifecycle hooks
     componentDidMount(props){
         let searchTerm = this.props.reducer.searchKey
         this.props.getImages(searchTerm);
+    }
+
+    //Methods
+    //changes state for what is typed into the search bar
+    handleInputChange(event){
+        this.setState({input: event.target.value})
+    }
+
+    //executes when you hit enter in the search box
+    onEnter(event){
+        let searchTerm = this.state.input;
+        if(event.key === 'Enter'){
+            this.props.getImages(searchTerm)
+        }
     }
 
     render(props){
@@ -40,7 +60,7 @@ class Search extends Component {
             )
         })
 
-        console.log(this.props.reducer)
+        console.log(this.state.input)
         return(
             <div className="search-container">
                 <nav className="search-nav">
@@ -52,7 +72,11 @@ class Search extends Component {
 
                     <div className="search-nav-box2">
                         <span id="search-nav-icon"><FontAwesomeIcon icon="search"/></span>
-                        <input type="text" placeholder="Photos, people, or groups"/>
+                        <input type="text" 
+                        placeholder="Photos, people, or groups"
+                        onKeyUp={this.onEnter}
+                        onChange={this.handleInputChange}
+                        />
                     </div>
 
                     <div className="search-nav-btns">

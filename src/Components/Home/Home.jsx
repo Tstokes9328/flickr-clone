@@ -54,7 +54,7 @@ class Home extends Component {
                 if(i === backgroundImageArray.length){
                     i = 0;
                 }
-            }, 4500);
+            }, 5500);
         }
 
         //Links to search page after pressing 'enter' in search field
